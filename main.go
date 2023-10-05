@@ -59,7 +59,7 @@ func CapacityVsArray() {
 	//fmt.Println(a, len(a), cap(a))
 }
 
-// SliceInPlaceChange shows how the same slice can be used in it's manipulation
+// SliceInPlaceChange shows how the same slice can be used in its manipulation
 // without creating a new slice
 func SliceInPlaceChange(s []string) []string {
 	// example, removing empty strings from a slice
@@ -72,7 +72,43 @@ func SliceInPlaceChange(s []string) []string {
 	return out
 }
 
+// SliceAsAStack implements a stack data structure using slices
+func SliceAsAStack() {
+	s := []int{}
+
+	// push operation
+	s = append(s, 1)
+	s= append(s, 3)
+	fmt.Println(s)
+
+	// top operation
+	s = append(s, 4)
+	fmt.Println(s[len(s)-1])
+
+	// pop operation
+	fmt.Printf("before: %v\n", s)
+	s = s[:len(s)-1]
+	fmt.Printf("after: %v\n", s)
+
+}
+
+// SliceRemove removes an element from a slice using its index
+func SliceRemove(s []int, i int) {
+	// use the slice copy method
+
+	//newS := s[:i] // don't do this; it returns a reference of the original slice
+	// newS := make([]int, len(s[:i]))
+	// copy(newS, s[:i])
+	// newS = append(newS, s[i+1:]...)
+	// fmt.Printf("result: %v\n", newS)
+
+	// in-place method
+	copy(s[i:], s[i+1:])
+	// fmt.Printf("result (in-place): %v\n", s[:len(s)-1])
+	// copy(s[:i], s[i+1:])
+	// fmt.Printf("result: %v\n", s)
+}
+
 func main() {
-	res := SliceInPlaceChange([]string{"", "hello", "array", "", "array"})
-	fmt.Println(res, len(res))
+	// fmt.Println(ReverseArrayPointer())
 }
