@@ -16,7 +16,7 @@ func ReverseSlice(s []int) {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
 		s[i], s[j] = s[j], s[i]
 	}
-	fmt.Println(s)
+	// fmt.Println(s)
 }
 
 func SliceEquality(a, b []int) bool {
@@ -93,7 +93,7 @@ func SliceAsAStack() {
 }
 
 // SliceRemove removes an element from a slice using its index
-func SliceRemove(s []int, i int) {
+func SliceRemove(s []int, i int) []int {
 	// use the slice copy method
 
 	//newS := s[:i] // don't do this; it returns a reference of the original slice
@@ -104,11 +104,29 @@ func SliceRemove(s []int, i int) {
 
 	// in-place method
 	copy(s[i:], s[i+1:])
+	return s[:len(s)-1] // removed one
 	// fmt.Printf("result (in-place): %v\n", s[:len(s)-1])
 	// copy(s[:i], s[i+1:])
 	// fmt.Printf("result: %v\n", s)
 }
 
+func RotateSlice() {
+	s := []int{0,1,2,3,4,5}
+
+	// to rotate a slice n times is to put the first n elements
+	// at the back of the rest of the array
+	// a full rotate of len(s) == n gives a full reverse slice
+
+	ReverseSlice(s[:6])
+	ReverseSlice(s[5:])
+}
+
+
 func main() {
+	// RotateSliceOnce(4)
 	// fmt.Println(ReverseArrayPointer())
+	// s := []int{1,2,3,4,5}
+	// newS := SliceRemove(s, 4)
+	// fmt.Println(newS)
+	// fmt.Println(len(newS), cap(newS), s[5])
 }
