@@ -51,7 +51,7 @@ func CapacityVsArray() {
 	fmt.Println(a)
 
 	// we can even append past capacity, more capacity will be created for us
-	a = append(a, 4,5,6,7)
+	a = append(a, 4, 5, 6, 7)
 	fmt.Printf("a = %v, len=%d, cap=%d\n", a, len(a), cap(a))
 
 	// capacity can NOT be less than length
@@ -78,7 +78,7 @@ func SliceAsAStack() {
 
 	// push operation
 	s = append(s, 1)
-	s= append(s, 3)
+	s = append(s, 3)
 	fmt.Println(s)
 
 	// top operation
@@ -111,7 +111,7 @@ func SliceRemove(s []int, i int) []int {
 }
 
 func RotateSlice() {
-	s := []int{0,1,2,3,4,5}
+	s := []int{0, 1, 2, 3, 4, 5}
 
 	// to rotate a slice n times is to put the first n elements
 	// at the back of the rest of the array
@@ -121,6 +121,17 @@ func RotateSlice() {
 	ReverseSlice(s[5:])
 }
 
+func StringSliceEquality(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
 
 func main() {
 	// RotateSliceOnce(4)
@@ -129,4 +140,5 @@ func main() {
 	// newS := SliceRemove(s, 4)
 	// fmt.Println(newS)
 	// fmt.Println(len(newS), cap(newS), s[5])
+	// RemoveAdjacentDuplicates()
 }

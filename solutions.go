@@ -2,10 +2,10 @@ package main
 
 // solution to GOPL Exercises 4.3 - 4.7
 
-// reverse an array 
+// reverse an array
 // edit in-place by passing a pointer to the array
 func ReverseArrayPointer(arr *[3]int) {
-	for i, j := 0, len(arr) - 1; i < j; i, j = i+1, j-1 {
+	for i, j := 0, len(arr)-1; i < j; i, j = i+1, j-1 {
 		arr[i], arr[j] = arr[j], arr[i]
 	}
 	// return arr
@@ -26,8 +26,14 @@ func RotateSliceOnce(s []int, n int) {
 // ex 4.5
 // remove adjacent duplicates
 // in-place function
-func RemoveAdjacentDuplicates() {
-	// s := []string{"a", "b", "c", "c"}
-
-	// keep a counter
+func RemoveAdjacentDuplicates(s []string) []string {
+	i := 0
+	for _, v := range s {
+		if s[i] == v {
+			continue
+		}
+		i++
+		s[i] = v
+	}
+	return s[:i+1]
 }
